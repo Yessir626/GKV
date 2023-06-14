@@ -24,6 +24,20 @@
         align-items: center;
         justify-content: center;
       }
+
+      #dropdown {
+        width: 150px;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #333;
+      }
+
+      #dropdown option {
+        font-size: 14px;
+      }
     </style>
   </head>
   <body>
@@ -32,7 +46,7 @@
     <script src="test.js"></script>
     <!-- HTML -->
     <div>
-      <select id="dropdown">
+      <select class="form-select" aria-label="Default select example" id="dropdown">
         <option selected>PickedHero</option>
         <option value="marksman">marskman</option>
         <option value="tank">tank</option>
@@ -68,5 +82,6 @@
     <button id="button1">Tombol 1</button>
     <p id="winRed"></p>
     <p id="winBlue"></p>
+    <div id="PieWinrate"><!-- Plotly chart will be drawn inside this DIV --></div>
   </body>
 </html>

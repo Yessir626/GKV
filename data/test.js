@@ -245,5 +245,65 @@ function calculator(parsedData) {
     // console.log(hasil2);
     red.innerHTML = "Red " + finalRed.toFixed(2) + "%";
     blue.innerHTML = "blue " + finalBlue.toFixed(2) + "%";
+
+    createWinrate(finalRed.toFixed(2), finalBlue.toFixed(2));
   });
+}
+
+function createWinrate(red, blue) {
+  // var data = [
+  //   {
+  //     type: "pie",
+  //     values: [red, blue],
+  //     labels: ["Wages", "Operating expenses"],
+  //     textinfo: "label+percent",
+  //     insidetextorientation: "radial",
+  //     marker: {
+  //       colors: ["rgb(255, 0, 0)", "rgb(0, 0, 255)"],
+  //     },
+  //   },
+  // ];
+
+  // var layout = [
+  //   {
+  //     height: 700,
+  //     width: 700,
+  //   },
+  // ];
+
+  var trace1 = {
+    y: [""],
+    x: [red],
+    name: "Red",
+    type: "bar",
+    orientation: "h",
+    marker: {
+      color: "red",
+    },
+  };
+
+  var trace2 = {
+    y: [""],
+    x: [blue],
+    name: "blue",
+    type: "bar",
+    orientation: "h",
+    marker: {
+      color: "blue",
+    },
+  };
+
+  var data = [trace1, trace2];
+
+  var layout = {
+    barmode: "stack",
+    orientation: "h",
+
+    xaxis: {
+      ticktext: [""],
+      showticklabels: false,
+    },
+  };
+
+  Plotly.newPlot("PieWinrate", data, layout);
 }
