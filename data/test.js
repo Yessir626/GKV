@@ -23,11 +23,14 @@ fetch("http://localhost:3000/mlbb_hero-edit.csv")
       const listContainer = document.getElementById("listContainer");
 
       listContainer.innerHTML = "";
+      listContainer.classList.add("list-group", "list-group-flush", "mx-auto");
+      listContainer.style.maxWidth = "150px";
       creatBarChat(filteredData);
       // Buat elemen li untuk setiap item dalam array data
       filteredData.forEach((item) => {
         // Buat elemen li
         const listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
 
         // Atur konten elemen li
         listItem.textContent = item.hero_name;
@@ -36,6 +39,7 @@ fetch("http://localhost:3000/mlbb_hero-edit.csv")
           // Tindakan yang ingin dilakukan ketika elemen li diklik
           console.log(`Anda mengklik ${item.hero_name}`);
           const heroData = parsedData.find((obj) => obj.hero_name == item.hero_name);
+
           namahero.innerHTML = item.hero_name;
           createPlot(heroData);
         });
@@ -167,8 +171,8 @@ function creatBarChat(dataHero) {
   Plotly.newPlot("barChart", data);
 }
 
-var winBlue = [0.4746, 0.4746, 0.4746, 0.4746, 0.4746];
-var winRed = [0.5077, 0.5077, 0.5077, 0.5077, 0.5077];
+var winBlue = [1, 1, 1, 1, 1];
+var winRed = [1, 1, 1, 1, 1];
 
 function creatDropdown(parsedData, i) {
   var dropdownId = "dropdownHero" + i;
@@ -199,16 +203,16 @@ function creatDropdown(parsedData, i) {
 
       console.log(Number(heroData.winrate_blue));
 
-      if (Number(heroData.winrate_blue) !== 0) {
-        winBlue[i - 1] = heroData.winrate_blue;
+      if (Number(heroData.winrate_pick) !== 0) {
+        winBlue[i - 1] = heroData.winrate_pick;
       } else {
         winBlue[i - 1] = 1;
       }
       console.log(winBlue);
     } else if (i > 0) {
       const heroData = parsedData.find((obj) => obj.hero_name == selectedValue);
-      if (Number(heroData.winrate_red) !== 0) {
-        winRed[i - 6] = heroData.winrate_red;
+      if (Number(heroData.winrate_pick) !== 0) {
+        winRed[i - 6] = heroData.winrate_pick;
       } else {
         winRed[i - 6] = 1;
       }
@@ -251,26 +255,6 @@ function calculator(parsedData) {
 }
 
 function createWinrate(red, blue) {
-  // var data = [
-  //   {
-  //     type: "pie",
-  //     values: [red, blue],
-  //     labels: ["Wages", "Operating expenses"],
-  //     textinfo: "label+percent",
-  //     insidetextorientation: "radial",
-  //     marker: {
-  //       colors: ["rgb(255, 0, 0)", "rgb(0, 0, 255)"],
-  //     },
-  //   },
-  // ];
-
-  // var layout = [
-  //   {
-  //     height: 700,
-  //     width: 700,
-  //   },
-  // ];
-
   var trace1 = {
     y: [""],
     x: [red],
@@ -279,6 +263,13 @@ function createWinrate(red, blue) {
     orientation: "h",
     marker: {
       color: "red",
+    },
+    text: [blue], // Menambahkan teks yang ingin ditampilkan pada bar
+    textposition: "inside", // Menempatkan teks di dalam bar
+    insidetextfont: {
+      // Menentukan format teks di dalam bar
+      size: 25,
+      color: "white",
     },
   };
 
@@ -290,6 +281,13 @@ function createWinrate(red, blue) {
     orientation: "h",
     marker: {
       color: "blue",
+    },
+    text: [red], // Menambahkan teks yang ingin ditampilkan pada bar
+    textposition: "inside", // Menempatkan teks di dalam bar
+    insidetextfont: {
+      // Menentukan format teks di dalam bar
+      size: 25,
+      color: "white",
     },
   };
 
