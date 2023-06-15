@@ -15,6 +15,13 @@ app.get("/mlbb_hero-edit.csv", (req, res) => {
   readableStream.pipe(res);
 });
 
+// Menambahkan endpoint untuk mengirim file gambar
+app.get("/images/mpl.jpg", (req, res) => {
+  const imagePath = __dirname + "/images/mpl.jpg";
+  const readableStream = fs.createReadStream(imagePath);
+  readableStream.pipe(res);
+});
+
 // Menjalankan server pada port 3000
 app.listen(3000, () => {
   console.log("Server berjalan pada port 3000");

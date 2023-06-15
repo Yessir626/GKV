@@ -115,6 +115,8 @@ function createPlot(data) {
   ];
 
   const layout = {
+    paper_bgcolor: "rgba(0, 0, 0, 0)",
+    plot_bgcolor: "rgba(0, 0, 0, 0)",
     polar: {
       radialaxis: {
         visible: true,
@@ -141,6 +143,8 @@ function firstPlot() {
   ];
 
   const layout = {
+    paper_bgcolor: "rgba(0, 0, 0, 0)",
+    plot_bgcolor: "rgba(0, 0, 0, 0)",
     polar: {
       radialaxis: {
         visible: true,
@@ -171,8 +175,8 @@ function creatBarChat(dataHero) {
   Plotly.newPlot("barChart", data);
 }
 
-var winBlue = [1, 1, 1, 1, 1];
-var winRed = [1, 1, 1, 1, 1];
+var winBlue = [0.4746, 0.4746, 0.4746, 0.4746, 0.4746];
+var winRed = [0.4746, 0.4746, 0.4746, 0.4746, 0.4746];
 
 function creatDropdown(parsedData, i) {
   var dropdownId = "dropdownHero" + i;
@@ -243,12 +247,26 @@ function calculator(parsedData) {
     var finalRed = ((hasil1 * 0.5) / (hasil2 * 0.5 + hasil1 * 0.5)) * 100;
 
     const red = document.getElementById("winRed");
+    red.style.backgroundColor = "#FF0000";
+
+    red.style.padding = "10px";
+    red.style.width = "100px";
+    red.style.textAlign = "center";
+    red.style.borderRadius = "10px";
+    red.style.color = "white";
+
     const blue = document.getElementById("winBlue");
+    blue.style.backgroundColor = "#0000FF";
+    blue.style.padding = "10px";
+    blue.style.width = "100px";
+    blue.style.textAlign = "center";
+    blue.style.borderRadius = "10px";
+    blue.style.color = "white";
 
     // console.log(hasil1);
     // console.log(hasil2);
     red.innerHTML = "Red " + finalRed.toFixed(2) + "%";
-    blue.innerHTML = "blue " + finalBlue.toFixed(2) + "%";
+    blue.innerHTML = "Blue " + finalBlue.toFixed(2) + "%";
 
     createWinrate(finalRed.toFixed(2), finalBlue.toFixed(2));
   });
@@ -257,43 +275,32 @@ function calculator(parsedData) {
 function createWinrate(red, blue) {
   var trace1 = {
     y: [""],
-    x: [red],
-    name: "Red",
-    type: "bar",
-    orientation: "h",
-    marker: {
-      color: "red",
-    },
-    text: [blue], // Menambahkan teks yang ingin ditampilkan pada bar
-    textposition: "inside", // Menempatkan teks di dalam bar
-    insidetextfont: {
-      // Menentukan format teks di dalam bar
-      size: 25,
-      color: "white",
-    },
-  };
-
-  var trace2 = {
-    y: [""],
     x: [blue],
-    name: "blue",
+    name: "Blue",
     type: "bar",
     orientation: "h",
     marker: {
       color: "blue",
     },
-    text: [red], // Menambahkan teks yang ingin ditampilkan pada bar
-    textposition: "inside", // Menempatkan teks di dalam bar
-    insidetextfont: {
-      // Menentukan format teks di dalam bar
-      size: 25,
-      color: "white",
+  };
+
+  var trace2 = {
+    y: [""],
+    x: [red],
+    name: "red",
+    type: "bar",
+    orientation: "h",
+    marker: {
+      color: "red",
     },
   };
 
   var data = [trace1, trace2];
 
   var layout = {
+    paper_bgcolor: "rgba(0, 0, 0, 0)",
+    plot_bgcolor: "rgba(0, 0, 0, 0)",
+    height: 250,
     barmode: "stack",
     orientation: "h",
 

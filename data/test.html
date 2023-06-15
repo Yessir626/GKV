@@ -41,55 +41,52 @@
         }
         .gambar img{
           position: absolute;
-          margin-top: 14px;
-          margin-left: -80px;
-          width: 70px;
-          height: 50px;
+          margin-top: 9px;
+          margin-left: -85px;
+          width: 80px;
+          height: 60px;
         }
         #winRed {
-          text-align: center;
-      position: absolute;
-      top: 2490px;
-      left: 30%;
-      transform: translateX(-50%);
-      z-index: 1;
-      }
-        #winBlue{
-          text-align: center;
-      position: absolute;
-      top: 2490px;
-      right: 25%;
-      transform: translateX(-50%);
-      z-index: 1;
+        text-align: center;
+        position: absolute;
+        right: 410px;
+        transform: translateX(-50%);
+        z-index: 1;
         }
+        #winBlue{
+        text-align: center;
+        position: absolute;
+        left: 510px;
+        transform: translateX(-50%);
+        z-index: 1;
+        }
+  
   </style>
   
       </style>
     </head>
     <body>
       <nav>
-        <div class="gambar"><a href ="#"><img src ="Images/logo.png"></a></div>
+  
+        <div class="gambar"><a href ="#"><img src ="Images/logompl.png"></a></div>
         <div class="logo">
-          <p>DWIZARD</p>
-          
+          <p><b href="#">DWIZARD</b></p>
         </div>
         <ul>
           <li><a href="#judul">STATISTIC</a></li>
           <li><a href="#winrate">WIN PREDICTION</a></li>
         </ul>
       </nav>
+      
       <div class="content-item">
         <img src="Images/mpl.jpg"alt="">
       </div>
-  
+      <div class="backgroundImage" ></div>
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+ 
+     
   
       <h4 id="judul"></h4>
       <br>
@@ -125,13 +122,9 @@
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      <br>
-  
   
       
-      <div class="text-center fs-1 text-black fw-bold">WINRATE</div>
+      <div class="text-center fs-1 text-black fw-bold">Win Prediction</div>
       <h4 id="winrate"></h4>
       <div class="row g-2">
         <br>
@@ -164,8 +157,9 @@
   
       <div class="d-grid gap-2 col-2 mx-auto">
       <button class="btn btn-outline-success" id="button1">Lihat Winrate</button></div>
-      <p id="winRed"></p>
-      <p id="winBlue"></p>
+      <br>
+      <div id="winRed" ></div>
+      <div id="winBlue"></div>
       <div id="PieWinrate"><!-- Plotly chart will be drawn inside this DIV --></div>
       <br>
       <br>
